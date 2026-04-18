@@ -1,55 +1,63 @@
-# Somaia's Portfolio — Assignment 2
+# Somaia's Portfolio — Assignment 3
 
-This is the second version of my portfolio website, built on top of Assignment 1.
-The goal this time was to make the site feel more alive — content that actually
-responds when you interact with it, real data handling, and smoother feedback
-throughout. Still plain HTML, CSS, and JavaScript. No frameworks, no shortcuts ✨
+This is the third version of my portfolio website, built on top of Assignment 2.
+The goal this time was to connect the site to the real world — live data from an
+external API, smarter logic that reacts to user choices, and state that actually
+persists between visits. Still plain HTML, CSS, and JavaScript. No frameworks ✨
 
 ---
 
-## What's new in Assignment 2
+## What's new in Assignment 3
 
-### Dynamic Content — Tab Navigation
-The navbar now works as a **tab system**: clicking About, Skills, Projects, or
-Contact instantly shows that section and hides the rest — no scrolling needed.
-The active tab gets a pink underline so you always know where you are.
+### API Integration — GitHub Repositories
+The portfolio now fetches my public repositories live from the **GitHub API**.
+Every time a visitor opens the GitHub section, the site pulls real data — repo
+names, descriptions, languages, stars, forks, and last updated date — and
+displays them as cards that match the site's design. No hardcoded projects.
 
-### Data Handling — Contact Form Validation
-The contact form validates all three fields (name, email, message) before
-"sending". It checks that nothing is empty and that the email has a valid format
-using a regex pattern. The user always gets clear feedback — either an error
-telling them what to fix, or a success message once everything looks good.
+### Complex Logic — Visitor Timer
+A live timer in the bottom-right corner tracks exactly how long the visitor has
+been on the page. It counts up in seconds, then switches to minutes and seconds,
+then hours and minutes — always showing the most readable format. The logic
+combines `setInterval`, `Date.now()`, and a multi-condition `formatTime` function
+to decide which format to display at each threshold.
 
-### Animation & Transitions — Scroll Fade-in
-Sections and cards fade in smoothly as you scroll down, using
-`IntersectionObserver`. No janky scroll listeners — just clean, performant
-reveal animations that run once and get out of the way.
+### State Management — Welcome Back (localStorage)
+On a first visit, a popup appears and asks for the visitor's name. The name is
+validated (not empty, at least 2 characters, max 30) and then saved to
+`localStorage`. On every return visit, a badge greets them by name with a
+time-aware message (Good morning / afternoon / evening / night). A pencil button
+lets them update their name at any time.
 
-### Error Handling & User Feedback
-The form never leaves the user guessing:
-- Empty fields → "Please fill in all fields."
-- Bad email → "Please enter a valid email address."
-- Everything valid → "Thank you! Your message has been received." ✅
+### Error Handling — API States
+The GitHub section never leaves the user confused. It handles three states:
+- **Loading** → spinner while the API call is in progress
+- **Error** → clear message + "Try Again" button if the fetch fails
+- **Success** → repo cards rendered and ready to click
 
 ---
 
 ## Features (full list)
 
-- **Tab navigation** → switches sections instantly on click
-- **Form validation** → name, email, message — all checked before submit
-- **Dark / Light theme** → toggle persisted in `localStorage`
-- **Time-based greeting** → Good Morning / Afternoon / Evening / Night
-- **Smooth scroll** → nav links glide to sections (fallback for non-tab use)
-- **Mobile menu** → hamburger toggle for small screens
-- **Scroll spy** → nav highlights the active section while scrolling
-- **Fade-in on scroll** → elements reveal as they enter the viewport
-- **Animated hero shape** → morphing blob with orbiting ring
+- **GitHub API** → live repositories fetched and displayed as cards
+- **Visitor timer** → live counter, auto-formats into s / m s / h m
+- **Welcome Back** → name saved in `localStorage`, greeted on return
+- **Name validation** → empty, min length, max length — all checked
+- **API error handling** → loading / error / success states with feedback
+- **Tab navigation** → switches sections instantly on click *(from A2)*
+- **Form validation** → name, email, message checked before submit *(from A2)*
+- **Dark / Light theme** → toggle persisted in `localStorage` *(from A2)*
+- **Time-based greeting** → Good Morning / Afternoon / Evening / Night *(from A2)*
+- **Mobile menu** → hamburger toggle for small screens *(from A2)*
+- **Fade-in on scroll** → elements reveal as they enter the viewport *(from A2)*
+- **Animated hero shape** → morphing blob with orbiting ring *(from A2)*
 
 ---
 
 ## Project structure
+
 ```
-assignment-2/
+assignment-3/
 ├── index.html
 ├── css/
 │   └── styles.css
@@ -73,19 +81,31 @@ assignment-2/
 
 1. Clone the repository:
 ```bash
-   git clone https://github.com/SomaiaKha/assignment-2.git
+git clone https://github.com/SomaiaKha/assignment-3.git
 ```
 2. Open `index.html` in any modern browser — no server needed.
+3. The GitHub API works without a key (public repos only). If you hit the rate
+   limit (60 requests/hour per IP), wait a few minutes and try again.
+
+---
+
+## API used
+
+| API | Endpoint | Auth needed |
+|-----|----------|-------------|
+| GitHub REST API | `https://api.github.com/users/SomaiaKha/repos` | None (public) |
 
 ---
 
 ## AI usage summary
 
 I used **Claude AI** throughout this assignment:
-- Helped plan which interactive features to implement
-- Generated base JS logic for tab navigation and form validation
-- Suggested the `IntersectionObserver` approach for scroll animations
-- Assisted with writing this README and the technical documentation
+- Helped me understand how `fetch()` and `async/await` work with REST APIs
+- Explained HTTP error codes and how to handle each one with a user-friendly message
+- Walked me through `setInterval` and `Date.now()` for the visitor timer
+- Clarified how `localStorage` works for persisting state between visits
+- Helped me spot a conflict between my `IntersectionObserver` and dynamically
+  created GitHub cards
 
 I reviewed, tested, and modified everything to make sure I understand it and
 that it fits my project. Full details in `docs/ai-usage-report.md`.
@@ -94,19 +114,20 @@ that it fits my project. Full details in `docs/ai-usage-report.md`.
 
 ## Notes from building this
 
-- Tab navigation was simpler than expected once I understood `display: none` toggling
-- The form regex for email validation is way cleaner than manual string checking
-- `IntersectionObserver` is still my favourite CSS/JS trick — much better than scroll listeners
-- `localStorage` for theme persistence is genuinely useful — wish more sites did this
+- The GitHub API is surprisingly easy to use — no key needed for public repos
+- Thinking in states (loading / success / error) made the API feature much cleaner
+- `localStorage` for the welcome name felt like a natural extension of the theme toggle from A2
+- The timer's `formatTime` function was more fun to write than expected — lots of little conditions
+- Lazy-loading the API with `IntersectionObserver` instead of on page load was a good call
 
 ---
 
 ## Checklist
 
-- [x] Dynamic content (tab navigation)
-- [x] Data handling (form validation + localStorage theme)
-- [x] Animations (fade-in on scroll, hover effects)
-- [x] Error handling & user feedback (form messages)
+- [x] API integration (GitHub Repositories — live data, error handling)
+- [x] Complex logic (visitor timer with multi-condition formatting)
+- [x] State management (Welcome Back — localStorage, validation, return visits)
+- [x] Error handling & user feedback (loading / error / success states)
 - [x] AI tools used and documented
 - [x] README + technical documentation complete
 - [x] Responsive across desktop, tablet, mobile

@@ -1,8 +1,8 @@
-# AI Usage Report — Assignment 2
+# AI Usage Report — Assignment 3
 
 ## Tools I Used
 
-* I used **Claude AI** as my main helper throughout this assignment — for asking
+* I used **Claude AI , ChatGPT** as my main helper throughout this assignment — for asking
   questions, getting unstuck, understanding new concepts, and reviewing my work
   before submitting.
 
@@ -10,75 +10,68 @@
 
 ## How I Used It
 
-* When I wasn't sure how to turn the existing navbar into a working tab system,
-  I asked Claude to explain the approach. I then wrote the logic myself and
-  adjusted it to match my existing CSS classes.
-* For the form validation, I knew what I wanted to check (empty fields, email
-  format) but wasn't sure about the cleanest way to do it in JS. Claude explained
-  regex patterns and I applied them in my own code.
-* I asked Claude to explain how `IntersectionObserver` works for the fade-in
-  animations — then I implemented and fine-tuned the thresholds myself.
-* I also used Claude to review my README and documentation drafts, then rewrote
-  everything in my own words.
+* For the GitHub API integration, I asked Claude to explain how `fetch()` works
+  with `async/await` and how to handle different HTTP error codes. I then wrote
+  the fetch function myself and structured the error handling around my use case.
+* For the Visitor Timer, I described what I wanted (a live counter that formats
+  seconds into minutes and hours) and Claude explained the `setInterval` pattern.
+  I implemented and placed the feature myself.
+* For the Welcome Back feature, I asked how `localStorage` works. Claude explained
+  the get/set/remove methods and I built the full popup, validation logic, and
+  badge display myself.
 
 ---
 
 ## Use Cases
 
-* **Tab Navigation**: Asked about the best way to show/hide sections on click.
-  Claude explained the `display: none` toggling approach and I built it myself,
-  keeping it consistent with my existing nav structure.
-* **Form Validation**: Got help understanding how to use regex for email
-  checking. I wrote the full validation function and chose what error messages
-  to show.
-* **localStorage**: Asked how to persist the dark/light theme across page
-  reloads. Claude explained the concept and I integrated it into my existing
-  theme toggle.
-* **Animations**: Asked about `IntersectionObserver` for scroll-triggered
-  effects. Claude walked me through the API and I chose which elements to
-  animate and how.
-* **Debugging**: When my tab switching was affecting the scroll spy feature,
-  I described the conflict and Claude helped me think through the fix. I
-  implemented the solution myself.
-* **Documentation**: Asked for feedback on my README draft and rewrote it
-  based on the suggestions.
+* **GitHub API**: Asked how to fetch data from a public REST API and how to show
+  user-friendly error messages for each HTTP error case (403, 404, 500). I wrote
+  the full fetch function and card-building logic myself.
+* **Visitor Timer**: Got help understanding `setInterval` and how to format raw
+  seconds into a readable string (30s, 2m 15s, 1h 5m). I wrote my own version
+  with the exact thresholds I wanted.
+* **localStorage / Welcome Back**: Asked how `localStorage` differs from
+  `sessionStorage`. Claude explained the concept and I designed the full UI,
+  validation flow, and return-visit logic myself.
+* **Debugging**: When the GitHub cards weren't picking up the fade-in animation,
+  I described the issue and Claude explained that dynamically created elements
+  need the observer attached after they are added to the DOM. I applied the fix
+  myself.
 
 ---
 
 ## Benefits
 
-* Having a place to ask specific questions made learning faster — instead of
-  spending hours on one concept, I could get a clear explanation and keep moving.
-* I discovered cleaner JS patterns (like regex for validation and
-  `IntersectionObserver` for animations) that I wouldn't have found as quickly
-  on my own.
-* Debugging was less frustrating because I could describe what was happening
-  and get pointed in the right direction instead of guessing.
+* Understanding async/await and API error handling became clearer once I could
+  ask specific questions about my exact code rather than reading generic docs.
+* I learned to think about features in terms of states (loading, success, error,
+  empty) — a pattern I will carry into future projects.
+* localStorage felt abstract before this assignment; building the Welcome Back
+  feature gave me a concrete working example I can reference later.
 
 ---
 
 ## Challenges
 
-* Sometimes suggestions were too general, so I had to ask follow-up questions
-  to get something that actually fit my existing code structure.
-* I had to be careful not to just accept the first suggestion — I made myself
-  understand the logic before using anything.
-* A few times the suggested approach didn't match my CSS class names, so I had
-  to adapt the code rather than use it as-is.
+* Some explanations assumed I was starting from scratch, so I had to ask
+  follow-up questions to get advice that fit my existing code structure.
+* I had to resist using code snippets directly — I rewrote everything in my own
+  style and made sure I understood each line before adding it.
+* Positioning the timer badge and welcome badge without overlapping on mobile
+  required extra CSS work that I handled entirely on my own.
 
 ---
 
 ## Learning Outcomes
 
-* I learned how tab-based navigation works under the hood — it's simpler than
-  I expected once I understood the show/hide pattern.
-* I got comfortable writing form validation logic from scratch, including regex.
-* I understand `IntersectionObserver` well enough now that I could use it again
-  without looking it up.
-* I learned that small conflicts between features (like tab switching vs scroll
-  spy) require thinking about the overall JS flow, not just fixing one function.
-* I got better at asking specific questions — describing my exact problem and
-  existing code rather than asking generally.
+* I now understand how to connect a web page to a real external API, handle the
+  response, and show meaningful feedback at every stage (loading, success, error).
+* I learned that good state management means thinking about what data needs to
+  persist, where to store it, and how the UI should react when it changes.
+* I got comfortable building multi-condition validation — not just checking if a
+  field is empty, but checking length and giving specific feedback for each case.
+* I understand that features should be lazy when possible — the GitHub API only
+  fetches when the section enters the viewport, which is a real performance win.
 
 ---
 
