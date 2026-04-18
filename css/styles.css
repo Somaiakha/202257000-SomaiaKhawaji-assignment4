@@ -894,3 +894,48 @@ img { max-width: 100%; display: block; }
 .github-cta { text-align: center; margin-top: 8px; }
 
 @media (max-width: 640px) { .github-grid { grid-template-columns: 1fr; } }
+/* ===== VISITOR TIMER ===== */
+.visitor-timer {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    transition: all var(--transition);
+    animation: slideInTimer 0.5s ease forwards;
+}
+
+.visitor-timer:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.timer-icon { font-size: 1rem; }
+
+.timer-count {
+    font-weight: 600;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 36px;
+}
+
+@keyframes slideInTimer {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+    .visitor-timer { bottom: 16px; right: 16px; padding: 8px 14px; font-size: 0.78rem; }
+}

@@ -263,4 +263,30 @@ if (githubSection) {
     }, { threshold: 0.1 });
     githubObserver.observe(githubSection);
 }
+/* ===== VISITOR TIMER ===== */
+(function startVisitorTimer() {
+    const timerEl = document.getElementById('timerCount');
+    if (!timerEl) return;
+
+    const startTime = Date.now();
+
+    function formatTime(seconds) {
+        if (seconds < 60) {
+            return seconds + 's';
+        } else if (seconds < 3600) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return s > 0 ? `${m}m ${s}s` : `${m}m`;
+        } else {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            return m > 0 ? `${h}h ${m}m` : `${h}h`;
+        }
+    }
+
+    setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        timerEl.textContent = formatTime(elapsed);
+    }, 1000);
+})();
 });
