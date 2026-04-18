@@ -289,4 +289,91 @@ if (githubSection) {
         timerEl.textContent = formatTime(elapsed);
     }, 1000);
 })();
+/* ===== WELCOME BACK — localStorage ===== */
+(function initWelcome() {
+    const overlay      = document.getElementById('welcomeOverlay');
+    const badge        = document.getElementById('welcomeBadge');
+    const welcomeMsg   = document.getElementById('welcomeMsg');
+    const nameInput    = document.getElementById('visitorNameInput');
+    const submitBtn    = document.getElementById('welcomeSubmit');
+    const errorEl      = document.getElementById('welcomeError');
+    const resetBtn     = document.getElementById('resetName');
+
+    const STORAGE_KEY = 'visitorName';
+
+    // --- check for the name---
+    function checkStoredName() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+
+        if (saved) {
+            showBadge(saved);
+        } else {
+            setTimeout(() => {
+                overlay.style.display = 'flex';
+                nameInput.focus();
+            }, 1000);
+        }
+    }
+
+    // --- badge ---
+    function showBadge(name) {
+        const hour = new Date().getHours();
+        let greeting = 'Welcome back';
+        if (hour < 12)      greeting = 'Good morning';
+        else if (hour < 17) greeting = 'Good afternoon';
+        else if (hour < 21) greeting = 'Good evening';
+        else                greeting = 'Good night';
+
+        welcomeMsg.textContent = `${greeting}, ${name}! 👋`;
+        badge.style.display = 'flex';
+    }
+
+    // --- Save---
+    function saveName() {
+        const name = nameInput.value.trim();
+
+        
+        if (!name) {
+            errorEl.textContent = 'Please enter your name.';
+            nameInput.focus();
+            return;
+        }
+        if (name.length < 2) {
+            errorEl.textContent = 'Name must be at least 2 characters.';
+            nameInput.focus();
+            return;
+        }
+        if (name.length > 30) {
+            errorEl.textContent = 'Name is too long (max 30 characters).';
+            nameInput.focus();
+            return;
+        }
+
+        // Capitalize first letter
+        const formatted = name.charAt(0).toUpperCase() + name.slice(1);
+
+        localStorage.setItem(STORAGE_KEY, formatted);
+        overlay.style.display = 'none';
+        showBadge(formatted);
+    }
+
+    // --- Submit  ---
+    submitBtn.addEventListener('click', saveName);
+    nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveName();
+        errorEl.textContent = ''; // يمسح الخطأ لما تكتب
+    });
+
+    // ---  change the name ---
+    resetBtn.addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        badge.style.display = 'none';
+        nameInput.value = '';
+        errorEl.textContent = '';
+        overlay.style.display = 'flex';
+        setTimeout(() => nameInput.focus(), 100);
+    });
+
+    checkStoredName();
+})();
 });

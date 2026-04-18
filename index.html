@@ -325,5 +325,22 @@
     </footer>
 
     <script src="js/script.js"></script> 
+    <!-- ===== WELCOME POPUP ===== -->
+<div class="welcome-overlay" id="welcomeOverlay" style="display:none;">
+    <div class="welcome-card">
+        <p class="welcome-emoji">👋</p>
+        <h3 class="welcome-title">Welcome to my portfolio!</h3>
+        <p class="welcome-sub">What's your name?</p>
+        <input type="text" id="visitorNameInput" class="form-input welcome-input" placeholder="Enter your name...">
+        <p class="welcome-error" id="welcomeError"></p>
+        <button class="btn btn-primary welcome-btn" id="welcomeSubmit">Let's go →</button>
+    </div>
+</div>
+
+<!-- ===== WELCOME BACK BADGE ===== -->
+<div class="welcome-badge" id="welcomeBadge" style="display:none;">
+    <span id="welcomeMsg"></span>
+    <button class="badge-reset" id="resetName" title="Change name">✏️</button>
+</div>
 </body>
 </html>
