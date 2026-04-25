@@ -1,8 +1,8 @@
-# AI Usage Report — Assignment 3
+# AI Usage Report — Assignment 4
 
 ## Tools I Used
 
-* I used **Claude AI , ChatGPT** as my main helper throughout this assignment — for asking
+* I used **Claude AI, ChatGPT** as my main helper throughout this assignment — for asking
   questions, getting unstuck, understanding new concepts, and reviewing my work
   before submitting.
 
@@ -19,24 +19,25 @@
 * For the Welcome Back feature, I asked how `localStorage` works. Claude explained
   the get/set/remove methods and I built the full popup, validation logic, and
   badge display myself.
+* For Assignment 4 final polish, I used Claude to review code quality, improve
+  documentation, and assist with deploying the site to GitHub Pages.
 
 ---
 
 ## Use Cases
 
 * **GitHub API**: Asked how to fetch data from a public REST API and how to show
-  user-friendly error messages for each HTTP error case (403, 404, 500). I wrote
-  the full fetch function and card-building logic myself.
+  user-friendly error messages for each HTTP error case (403, 404, 500).
 * **Visitor Timer**: Got help understanding `setInterval` and how to format raw
-  seconds into a readable string (30s, 2m 15s, 1h 5m). I wrote my own version
-  with the exact thresholds I wanted.
+  seconds into a readable string (30s, 2m 15s, 1h 5m).
 * **localStorage / Welcome Back**: Asked how `localStorage` differs from
   `sessionStorage`. Claude explained the concept and I designed the full UI,
   validation flow, and return-visit logic myself.
 * **Debugging**: When the GitHub cards weren't picking up the fade-in animation,
   I described the issue and Claude explained that dynamically created elements
-  need the observer attached after they are added to the DOM. I applied the fix
-  myself.
+  need the observer attached after they are added to the DOM.
+* **Deployment**: Asked Claude for step-by-step guidance on deploying to GitHub
+  Pages and writing professional documentation.
 
 ---
 
@@ -48,6 +49,8 @@
   empty) — a pattern I will carry into future projects.
 * localStorage felt abstract before this assignment; building the Welcome Back
   feature gave me a concrete working example I can reference later.
+* Having AI assistance for documentation helped me write clearer and more
+  professional technical writing.
 
 ---
 
@@ -70,8 +73,8 @@
   persist, where to store it, and how the UI should react when it changes.
 * I got comfortable building multi-condition validation — not just checking if a
   field is empty, but checking length and giving specific feedback for each case.
-* I understand that features should be lazy when possible — the GitHub API only
-  fetches when the section enters the viewport, which is a real performance win.
+* I learned how to deploy a website professionally using GitHub Pages.
+* I improved my technical writing skills through documenting my work clearly.
 
 ---
 
@@ -81,9 +84,7 @@
   I understood it, and then wrote my own version that fit my project.
 * All personal content (bio, project descriptions, skills) is mine. Claude
   never wrote anything about me.
-* I chose which features to build, how they look, and how they behave. When a
-  suggestion didn't feel right for my site, I changed it.
-* I tested everything manually across desktop, tablet, and mobile and fixed
-  issues on my own.
+* I chose which features to build, how they look, and how they behave.
+* I tested everything manually across desktop, tablet, and mobile.
 * I used Claude the same way I'd use a tutor — to understand concepts and
   get unstuck, not to get the work done for me.
