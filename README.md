@@ -38,7 +38,6 @@ that demonstrates my full range of skills. Still plain HTML, CSS, and JavaScript
 │   ├── ai-usage-report.md
 │   └── technical-documentation.md
 ├── presentation/
-│   ├── slides.pdf
 │   └── demo-video.mp4
 ├── README.md
 └── .gitignore
